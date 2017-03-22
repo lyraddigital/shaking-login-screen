@@ -2,17 +2,36 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { LoginSuccessComponent } from './login-success/login-success.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    LoginSuccessComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'login-success',
+        component: LoginSuccessComponent
+      },
+      {
+        path: '**',
+        component: LoginComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
